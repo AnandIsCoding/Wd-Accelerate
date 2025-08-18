@@ -2,11 +2,16 @@ import React, { useState, useRef, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa6";
+import Product from "./Product";
+import axios from "axios";
+import ShimmerProduct from "./ShimmerProduct";
 
 const Main = () => {
+  const [loading, setLoading] = useState(true);
   const [collapsed, setCollapsed] = useState(false);
   const [showSort, setShowSort] = useState(false);
   const [selected, setSelected] = useState("Recommended");
+  const [products, setProducts] = useState([]);
 
   const dropdownRef = useRef(null);
 
@@ -25,6 +30,18 @@ const Main = () => {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
+    const fetchProducts = async () => {
+      try {
+        const res = await axios.get("https://fakestoreapi.com/products");
+        setProducts(res.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -61,18 +78,22 @@ const Main = () => {
           {/* Dropdown */}
           {showSort && (
             <div className="absolute top-full right-0 mt-2 py-5 px-2 w-56 bg-white shadow-lg rounded-md z-50 text-sm text-gray-700">
-              <span onClick={() => handleSortChange("Recommended")} className="flex justify-between">
-                <p className="p-2 hover:bg-gray-100 cursor-pointer">
+              <span
+                onClick={() => handleSortChange("Recommended")}
+                className="flex justify-between hover:bg-gray-100 cursor-pointer"
+              >
+                <p className="p-2 ">
                   Recommended
                 </p>
                 {selected === "Recommended" && (
-                  <FaCheck size={20} color="blue" />
+                  <FaCheck size={20} color="blue"  />
                 )}
               </span>
-              <span className="flex justify-between" onClick={() => handleSortChange("Low to High")}>
-                <p
-                  className="p-2 hover:bg-gray-100 cursor-pointer"
-                >
+              <span
+                className="flex justify-between hover:bg-gray-100 cursor-pointer"
+                onClick={() => handleSortChange("Low to High")}
+              >
+                <p className="p-2 ">
                   Sort by Price: Low to High
                 </p>
                 {selected === "Low to High" && (
@@ -80,10 +101,11 @@ const Main = () => {
                 )}
               </span>
 
-              <span className="flex justify-between" onClick={() => handleSortChange("High to Low")}>
-                <p
-                  className="p-2 hover:bg-gray-100 cursor-pointer"
-                >
+              <span
+                className="flex justify-between hover:bg-gray-100 cursor-pointer"
+                onClick={() => handleSortChange("High to Low")}
+              >
+                <p className="p-2">
                   Sort by Price: High to Low
                 </p>
                 {selected === "High to Low" && (
@@ -124,7 +146,20 @@ const Main = () => {
               collapsed ? "" : "md:block"
             }`}
           >
-            <div className="p-4">Main Content Area</div>
+            {/* Product Grid */}
+            <div
+              className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 ${
+                collapsed ? "lg:grid-cols-6" : "lg:grid-cols-5"
+              } gap-1`}
+            >
+              {loading
+                ? Array.from({ length: 20 })?.map((_, index) => (
+                    <ShimmerProduct key={index} index={index} />
+                  ))
+                : products?.map((product, index) => (
+                    <Product key={index} product={product} index={index} />
+                  ))}
+            </div>
           </div>
         </div>
       </div>
