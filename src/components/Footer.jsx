@@ -42,7 +42,7 @@ function Footer() {
 
           <h3 className="font-semibold uppercase mt-6">Currency</h3>
           <p className="mt-2 flex items-center gap-2">
-            <span>🇺🇸</span> USD
+            <span>IN</span> INR
           </p>
           <p className="text-xs text-gray-500 mt-1">
             Transactions will be completed in Euros and a currency reference is
