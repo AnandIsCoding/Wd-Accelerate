@@ -15,31 +15,33 @@ function Product({ product, index }) {
   const bgColor = colors[index % colors.length];
 
   return (
-    <div className=" transition flex flex-col">
+    <div className="transition flex flex-col">
       {/* Image Container with background */}
-      <div className={`${bgColor} flex justify-center items-center p-6 md:p-10 `}>
+      <div
+        className={`${bgColor} flex justify-center items-center p-6 md:p-10`}
+      >
         <img
           src={product?.image}
-          alt={product?.title}
+          alt={product?.title.slice(0, 30) + "..."}
           className="h-58 w-auto object-contain"
         />
       </div>
 
-      {/* Details Section (no background) */}
-      <div className="py-4 px-0 flex flex-col items-center text-center bg-white ">
+      {/* Details Section */}
+      <div className="py-4 px-2 flex flex-col items-center text-center bg-white">
         {/* Product Name */}
         <h2 className="text-sm font-semibold text-gray-900">
-          {product?.title.slice(0,30)+'...' || "PRODUCT NAME"}
+          {product?.title.slice(0, 25) + "..." || "PRODUCT NAME"}
         </h2>
 
         {/* Price / Login Note */}
-        <p className="text-xs text-gray-600 mt-1 flex gap-1">
-          <span className="text-gray-500">Sign in</span> or Create an account to see pricing &nbsp;
-          <GoHeart size={14}/>
-        </p>
-
-        {/* Favorite Icon */}
-        
+        <div className="mt-2 flex items-center justify-center flex-wrap gap-1 text-xs text-gray-600">
+          <p className="text-gray-500 whitespace-nowrap">Sign in</p>
+          <span className="sm:inline">or</span>
+          <p className="whitespace-nowrap">Create an account</p>
+          <span className="hidden sm:inline">to see pricing</span>
+          <GoHeart size={14} className="ml-1 text-gray-500" />
+        </div>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-full  bg-white sticky top-0">
+      <header className="w-full  bg-white sticky top-0 z-[999]">
         <div className="container mx-auto px-2 md:px-4 py-3 flex items-center justify-between">
           {/* Left side: Hamburger + Brand */}
           <div className="flex items-center space-x-3">
