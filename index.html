@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://imgs.search.brave.com/lqhG2F6SagoT-puBq7O34szuRRHWfGuOdLTF3mfxhO4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2FhLzQ5/Lzk2L2FhNDk5Njli/Y2M1YzFiMGMwYzE4/YWU4M2FiODE1Nzhk/LmpwZw" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kharido</title>
+    <!-- Stop zoom via trackpad mousepad -->
+    <script>
+      document.addEventListener(
+        "wheel",
+        function (event) {
+          if (event.ctrlKey || event.metaKey) {
+            event.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
