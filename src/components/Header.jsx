@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import {
-  FiMenu,
-  FiX,
-  FiSearch,
   FiHeart,
+  FiMenu,
+  FiSearch,
   FiShoppingBag,
   FiUser,
+  FiX,
 } from "react-icons/fi";
 import { TiInfinityOutline } from "react-icons/ti";
 

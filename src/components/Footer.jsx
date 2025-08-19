@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
-import { FaCcPaypal, FaCcAmex } from "react-icons/fa6";
-import { SiGooglepay, SiApplepay } from "react-icons/si";
+import { FaCcAmex,FaCcPaypal } from "react-icons/fa6";
 import { IoChevronDown, IoChevronUp } from "react-icons/io5";
+import { SiApplepay,SiGooglepay } from "react-icons/si";
 
 function Footer() {
   const [openSection, setOpenSection] = useState(null);
@@ -13,7 +13,7 @@ function Footer() {
 
   return (
     <footer className="bg-black text-white text-sm">
-      {/* Top Section - Newsletter + Contact */}
+      {/* Newsletter + Contact */}
       <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-2 gap-10 border-b border-gray-600">
         {/* Newsletter */}
         <div>
@@ -42,7 +42,7 @@ function Footer() {
 
           <h3 className="font-semibold uppercase mt-6">Currency</h3>
           <p className="mt-2 flex items-center gap-2">
-            <span>IN</span> INR
+          INR
           </p>
           <p className="text-xs text-gray-500 mt-1">
             Transactions will be completed in Euros and a currency reference is
@@ -122,7 +122,7 @@ function Footer() {
             )}
           </div>
 
-          {/* Section: Quick Links */}
+          {/* Quick Links */}
           <div className="border-b border-gray-700 py-3">
             <button
               onClick={() => toggleSection("quick")}
@@ -144,7 +144,7 @@ function Footer() {
             )}
           </div>
 
-          {/* Section: Follow Us */}
+          {/* Follow Us */}
           <div className="border-b border-gray-700 py-3">
             <button
               onClick={() => toggleSection("follow")}
@@ -163,7 +163,7 @@ function Footer() {
             )}
           </div>
 
-          {/* Payments always visible */}
+          {/* Payments  */}
           <div className="py-4">
             <h3 className="font-semibold uppercase">metta muse accepts</h3>
             <div className="flex flex-wrap gap-3 mt-3 text-3xl">
@@ -176,7 +176,7 @@ function Footer() {
         </div>
       </div>
 
-      {/* Bottom copyright */}
+      {/* copyright */}
       <div className="text-center text-gray-500 text-xs py-6">
         Copyright © 2023 wdaccelerateecom. All rights reserved.
       </div>
